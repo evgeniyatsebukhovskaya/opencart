@@ -2,13 +2,14 @@ import pytest
 from time import sleep
 from selenium import webdriver
 
-
+'''
 def driver():
     d = webdriver.Firefox()
     d.maximize_window()
     d.get('http://localhost/opencart/')
     yield d
     d.quit()
+    '''
 
 class MainPage():
 
