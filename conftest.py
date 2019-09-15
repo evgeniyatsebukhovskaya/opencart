@@ -8,15 +8,16 @@ from pathlib import Path
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="choose chrome, firefox or ie")
+    parser.addoption("--url", action="store", default="http://installopencart.localhost/", help="choose your browser")
 
 
 @pytest.fixture
-def browser(request):
+def driver(request):
     browser = request.config.getoption("--browser")
     if browser == "chrome":
         options = ChromeOptions()
         options.add_argument('--headless')
-        d = webdriver.Chrome(chrome_options=options)
+        d = webdriver.Chrome(options=options)
     if browser == "firefox":
         options = FirefoxOptions()
         options.add_argument('--headless')
@@ -26,7 +27,8 @@ def browser(request):
         options.add_argument('--headless')
         d = webdriver.Ie(options=options)
     d.maximize_window()
-    d.get('http://installopencart.localhost/')
+    #d.get('http://installopencart.localhost/')
+    d.get(request.config.getoption("--url"))
     yield d
     d.quit()
     return d
