@@ -1,6 +1,3 @@
-from selenium import webdriver
-
-
 class MainPage:
 
     header = '#top'
