@@ -85,7 +85,11 @@ class TestProducts:
         products_page = ProductsAdminPage()
         driver.find_element_by_xpath(products_page.select_first_product_selector).click()
         driver.find_element_by_xpath(products_page.delete_button).click()
-        sleep(3)
+        alert = driver.switch_to_alert()
+        alert.accept()
+        assert driver.find_element_by_xpath(products_page.success_message).is_displayed()
+
+
 
 
 
