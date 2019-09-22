@@ -4,6 +4,7 @@ from selenium import webdriver
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="choose chrome, firefox or ie")
     parser.addoption("--url", action="store", default="http://opencart.eng/", help="choose your browser")
+   #parser.addoption("--wait", action="store", default='10', help="set implicitly wait")
 
 @pytest.fixture
 def driver(request):
@@ -15,6 +16,7 @@ def driver(request):
     if browser == "ie":
         d = webdriver.Ie(r'C:\Users\Dmitry\otus2\opencart\IEDriverServer')
     d.maximize_window()
+    d.implicitly_wait(10)
     d.get(request.config.getoption("--url"))
     yield d
     d.quit()
