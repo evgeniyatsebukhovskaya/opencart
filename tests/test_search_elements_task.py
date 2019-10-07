@@ -1,8 +1,9 @@
 import pytest
 from selenium import webdriver
 from tests.locators.MainPage import MainPage
-from tests.locators.LoginPage import LoginPage
+from tests.locators.LoginPage import LoginPage as LoginPageLocators
 from tests.locators.ProductPage import ProductPage
+from tests.support.LoginPage import LoginPage
 from time import sleep
 
 
@@ -10,18 +11,14 @@ class TestSearchElement:
 
     def test_login_with_incorrect_data(self, driver):
         driver.get('http://opencart.eng/admin/')
-        login_page = LoginPage()
-        driver.find_element_by_css_selector(login_page.login_field).send_keys('test@test.com')
-        driver.find_element_by_css_selector(login_page.password_field).send_keys('123456')
-        driver.find_element_by_xpath(login_page.login_button).click()
+        login_page = LoginPage(driver)
+        login_page.login_with_given_data(driver, 'test@test.com', '123456')
         assert driver.find_element_by_xpath('.//div[@class="alert alert-danger alert-dismissible"]').is_displayed()
 
     def test_login_with_correct_data(self, driver):
         driver.get('http://opencart.eng/admin/')
-        login_page = LoginPage()
-        driver.find_element_by_css_selector(login_page.login_field).send_keys('admin')
-        driver.find_element_by_css_selector(login_page.password_field).send_keys('admin')
-        driver.find_element_by_xpath(login_page.login_button).click()
+        login_page = LoginPage(driver)
+        login_page.login_with_given_data(driver, 'admin', 'admin')
         assert driver.find_element_by_xpath('.//span[text()="Logout"]').is_displayed()
 
     def test_search(self, driver):
