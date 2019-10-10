@@ -1,8 +1,8 @@
 class LoginPage:
 
-    login_field = '#input-username'
-    password_field = '#input-password'
-    login_button = './/button[@type="submit"]'
-    user_title = './/label[text()="Username"]'
+    login_field = {'css': '#input-username'}
+    password_field = {'css': '#input-password'}
+    login_button = {'xpath': './/button[@type="submit"]'}
+    user_title = {'xpath': './/label[text()="Username"]'}
 
 

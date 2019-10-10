@@ -1,4 +1,4 @@
 class AlertBlock:
 
-    cross_of_alert = './/button[@class="close"]'
-    inside_alert_legend = './/legend[text()="Choose how to move the storage directory"]'
+    cross_of_alert = {'xpath': './/button[@class="close"]'}
+    inside_alert_legend = {'xpath': './/legend[text()="Choose how to move the storage directory"]'}
