@@ -14,3 +14,7 @@ class LoginPage(BasePage):
         self.element(login_page.login_field).send_keys(login)
         self.element(login_page.password_field).send_keys(password)
         self.element(login_page.login_button).click()
+
+    def check_user_at_login_page(self):
+        assert self.element(LoginPageLocators().login_field).is_displayed
+

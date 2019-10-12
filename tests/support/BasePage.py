@@ -1,4 +1,5 @@
 from tests.support.SearchBlock import SearchBlock
+from tests.support.HeaderBlock import HeaderBlock
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -10,6 +11,7 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.search = SearchBlock(driver)
+        self.header = HeaderBlock(driver)
 
     def element(self, selector: dict):
         by = None

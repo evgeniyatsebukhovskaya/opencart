@@ -35,3 +35,18 @@ class TestSearchElement:
         ProductPage(driver).add_a_product_to_wishlist()
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, './/a[text()="wish list"]')))
         assert driver.find_element_by_xpath('.//a[text()="wish list"]').is_displayed()
+
+    def test_add_first_product_to_cart_once(self, driver):
+        MainPage(driver).add_first_product_to_cart()
+        MainPage(driver).check_one_item_is_added_to_cart()
+
+    def test_add_first_product_to_cart_twice(self, driver):
+        MainPage(driver).add_first_product_to_cart()
+        MainPage(driver).add_first_product_to_cart()
+        MainPage(driver).check_two_items_are_added_to_cart()
+
+    def test_cart_is_empty_at_the_beginning(self, driver):
+        MainPage(driver).open_cart()
+        MainPage(driver).check_cart_is_empty()
+
+
