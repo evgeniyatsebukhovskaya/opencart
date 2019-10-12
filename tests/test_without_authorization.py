@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
-class TestSearchElement:
+class TestWithoutAuthorization:
 
     def test_login_with_incorrect_data(self, driver):
         driver.get('http://opencart.eng/admin/')

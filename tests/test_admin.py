@@ -13,7 +13,7 @@ fake.add_provider(internet)
 fake.add_provider(person)
 
 
-class TestProducts:
+class TestAdmin:
 
     def test_create_new_products(self, driver):
         driver.get('http://opencart.eng/admin/')
