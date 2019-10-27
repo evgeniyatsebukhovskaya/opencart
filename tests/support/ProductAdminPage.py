@@ -17,7 +17,7 @@ class ProductAdminPage(BasePage):
         self.element(products_page.mega_tag_title_field).send_keys(mega_tag)
         self.element(products_page.data_section).click()
         self.element(products_page.model_field).send_keys(random_model)
-        self.element(products_page.save_product_button).click()
+        #self.element(products_page.save_product_button).click()
 
     def check_if_success_message_appears(self):
         products_page = ProductsAdminPageLocators()
