@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
 import time
 from time import strftime
+import inspect
 
 
 def pytest_addoption(parser):
@@ -41,6 +42,8 @@ class MyListener(AbstractEventListener):
     def on_exception(self, exception, driver):
         # pass
         time = strftime("%Y-%m-%d-%H-%M")
-        driver.save_screenshot('screenshots/'+time+'exception.png')
+        chika = inspect.stack()
+        name = inspect.stack()[5][3]
+        driver.save_screenshot('screenshots/'+time+' ' +name+'.png')
         #print(exception)
 

@@ -16,7 +16,7 @@ fake.add_provider(person)
 class TestAdmin:
 
     def test_create_new_products(self, driver):
-        driver.get('http://opencart.eng/admin/')
+        driver.get('http://localopencart/admin/')
         LoginPage(driver).login_with_given_data('admin', 'admin')
         AlertBlock(driver).close_alert()
         NavigationAdminBlock(driver).open_products_page()
@@ -27,7 +27,7 @@ class TestAdmin:
         ProductAdminPage(driver).check_if_success_message_appears()
 
     def test_change_quantity_of_product(self, driver):
-        driver.get('http://opencart.eng/admin/')
+        driver.get('http://localopencart/admin/')
         LoginPage(driver).login_with_given_data('admin', 'admin')
         AlertBlock(driver).close_alert()
         NavigationAdminBlock(driver).open_products_page()
@@ -35,7 +35,7 @@ class TestAdmin:
         ProductAdminPage(driver).check_if_success_message_appears()
 
     def test_delete_product(self, driver):
-        driver.get('http://opencart.eng/admin/')
+        driver.get('http://localopencart/admin/')
         LoginPage(driver).login_with_given_data('admin', 'admin')
         AlertBlock(driver).close_alert()
         NavigationAdminBlock(driver).open_products_page()
@@ -43,14 +43,14 @@ class TestAdmin:
         ProductAdminPage(driver).check_if_success_message_appears()
 
     def test_logout(self, driver):
-        driver.get('http://opencart.eng/admin/')
+        driver.get('http://localopencart/admin/')
         LoginPage(driver).login_with_given_data('admin', 'admin')
         AlertBlock(driver).close_alert()
         NavigationAdminBlock(driver).header.logout()
         LoginPage(driver).check_user_at_login_page()
 
     def test_change_admin_name(self, driver):
-        driver.get('http://opencart.eng/admin/')
+        driver.get('http://localopencart/admin/')
         LoginPage(driver).login_with_given_data('admin', 'admin')
         AlertBlock(driver).close_alert()
         NavigationAdminBlock(driver).header.open_profile()
