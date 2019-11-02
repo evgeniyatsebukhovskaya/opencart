@@ -32,11 +32,8 @@ def driver(request):
     return d
 
 
-# создаём logger
-#logger = logging.getLogger('simple_example')
-#logger.setLevel(logging.DEBUG)
-
-logging.basicConfig(filename="sample.log", level=logging.INFO, filemode="w")
+date = strftime("%Y-%m-%d-%H-%M")
+logging.basicConfig(filename=date + "_access.log", level=logging.INFO)
 
 # создаём консольный handler и задаём уровень
 ch = logging.StreamHandler()
@@ -47,16 +44,6 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 
 # добавляем formatter в ch
 ch.setFormatter(formatter)
-
-# добавляем ch к logger
-#logger.addHandler(ch)
-
-# код "приложения"
-#logger.debug('debug message')
-#logger.info('info message')
-#logger.warn('warn message')
-#logger.error('error message')
-#logger.critical('critical message')
 
 
 class MyListener(AbstractEventListener):
@@ -71,7 +58,7 @@ class MyListener(AbstractEventListener):
         print(driver.log_types)
         for l in driver.get_log("browser"):
             print(l)
-        time = strftime("%Y-%m-%d-%H-%M")
+        date = strftime("%Y-%m-%d-%H-%M")
         name = inspect.stack()[5][3]
-        driver.save_screenshot('screenshots/'+time+' ' + name +'.png')
+        driver.save_screenshot('screenshots/' + date + ' ' + name + '.png')
 
