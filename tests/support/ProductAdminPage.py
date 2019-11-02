@@ -32,7 +32,7 @@ class ProductAdminPage(BasePage):
         self.element(products_page.quantity_field).send_keys(Keys.CONTROL, "a")
         self.element(products_page.quantity_field).send_keys(Keys.BACKSPACE)
         self.element(products_page.quantity_field).send_keys("100")
-        self.element(products_page.save_product_button).click()
+        #self.element(products_page.save_product_button).click()
 
     def delete_first_product(self):
         products_page = ProductsAdminPageLocators()
